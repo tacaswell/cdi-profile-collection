@@ -1,0 +1,67 @@
+name: Test IPython CDI profile
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      version: # the variable you can use in place of a matrix
+        required: true
+        type: string
+
+jobs:
+  pre-commit:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: --hook-stage manual --all-files
+
+  testing_beamline_profiles:
+    name: ${{ matrix.repos.beamline-acronym }}-py${{ matrix.zenodo.python }}
+    needs: pre-commit
+    strategy:
+      fail-fast: false
+      matrix:
+        repos:
+          - org: "NSLS2"
+            repo: "cdi-profile-collection"
+            branch: ""
+            beamline-acronym: "cdi"
+        zenodo:
+          - url: "https://zenodo.org/records/15171538/files/2025-2.0-py310-tiled.tar.gz"
+            md5: "bf2ecadce50394b4f44767fd53f76eb6"
+            python: "3.10"
+          - url: "https://zenodo.org/records/15171538/files/2025-2.0-py311-tiled.tar.gz"
+            md5: "3d705483eab31648fae7cf0ce9a77e72"
+            python: "3.11"
+          - url: "https://zenodo.org/records/15171538/files/2025-2.0-py312-tiled.tar.gz"
+            md5: "23f5634eda0e3207504c3529c2ade1cc"
+            python: "3.12"
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Integration Tests Against Beamline Profiles
+        uses: NSLS2/gha-beamline-integration-test@bl-specific
+        with:
+          conda_env_url: "${{ matrix.zenodo.url }}"
+          conda_env_md5: "${{ matrix.zenodo.md5 }}"
+          org: "${{ matrix.repos.org }}"
+          repo: "${{ matrix.repos.repo }}"
+          branch: "${{ matrix.repos.branch }}"
+          beamline-acronym: "${{ matrix.repos.beamline-acronym }}"
