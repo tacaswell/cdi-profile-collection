@@ -54,7 +54,7 @@ jobs:
             python: "3.12"
             conda-version: "2025-2.0"
           - url: "https://zenodo.org/records/15390141/files/2025-2.1-py311-tiled.tar.gz"
-            md5: 15ba52a26f27baffbd30be33e3a42db0
+            md5: "15ba52a26f27baffbd30be33e3a42db0"
             python: "3.11"
             conda-version: "2025-2.1"
 
