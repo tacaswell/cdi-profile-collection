@@ -30,7 +30,7 @@ jobs:
           extra_args: --hook-stage manual --all-files
 
   testing_beamline_profiles:
-    name: ${{ matrix.repos.beamline-acronym }}-py${{ matrix.zenodo.python }}
+    name: ${{ matrix.repos.beamline-acronym }}-${{ matrix.zenodo.conda-version }}-py${{ matrix.zenodo.python }}
     needs: pre-commit
     strategy:
       fail-fast: false
@@ -44,12 +44,19 @@ jobs:
           - url: "https://zenodo.org/records/15171538/files/2025-2.0-py310-tiled.tar.gz"
             md5: "bf2ecadce50394b4f44767fd53f76eb6"
             python: "3.10"
+            conda-version: "2025-2.0"
           - url: "https://zenodo.org/records/15171538/files/2025-2.0-py311-tiled.tar.gz"
             md5: "3d705483eab31648fae7cf0ce9a77e72"
             python: "3.11"
+            conda-version: "2025-2.0"
           - url: "https://zenodo.org/records/15171538/files/2025-2.0-py312-tiled.tar.gz"
             md5: "23f5634eda0e3207504c3529c2ade1cc"
             python: "3.12"
+            conda-version: "2025-2.0"
+          - url: "https://zenodo.org/records/15390141/files/2025-2.1-py311-tiled.tar.gz"
+            md5: 15ba52a26f27baffbd30be33e3a42db0
+            python: "3.11"
+            conda-version: "2025-2.1"
 
     runs-on: ubuntu-latest
     steps:
