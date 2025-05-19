@@ -1,0 +1,19 @@
+[project]
+authors = ["thomashopkins32 <thopkins1@bnl.gov>"]
+channels = ["conda-forge"]
+name = "cdi-profile-collection"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+ipython = "*"
+ophyd = "*"
+python = "3.12.*"
+nslsii = "*"
+PyQt = "*"
+
+[pypi-dependencies]
+cditools = { path = "../cditools", editable = true }
+
