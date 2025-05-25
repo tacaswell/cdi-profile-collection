@@ -4,7 +4,7 @@ motors = [
     fsvpm,
     fshpm,
     fsdm2,
-    mono_dmm,
+    # mono_dmm,
     mono_hdcm,
     slt_vpm,
     slt_hpm,
@@ -14,16 +14,16 @@ motors = [
     slt_dm3,
     bpm_dm3,
     fsdm3,
-    mir_kbv,
-    mir_kbh,
-    bpm_dm4,
-    wnd_exit,
-    gon1,
-    slt_bcuu,
-    slt_bcud,
-    qstar1,
+    # mir_kbv,
+    # mir_kbh,
+    # bpm_dm4,
+    # wnd_exit,
+    # gon1,
+    # slt_bcuu,
+    # slt_bcud,
+    # qstar1,
 ]
-
+from pprint import pformat
 
 for motor in motors:
-    print(f"{motor.name}:\n{motor.read()}")
+    print(f"{motor.name}:\n{pformat(motor.read())}")
