@@ -31,6 +31,8 @@ pydantic-numpy = "*"
 
 [feature.profile.pypi-dependencies]
 ophyd-async = { version = ">=0.9.0, <0.10", extras = ["ca", "pva"] }
+# TODO get this onto conda-forge
+cditools = { git = "https://github.com/nsls2/cditools" }
 
 
 [feature.qs.dependencies]
