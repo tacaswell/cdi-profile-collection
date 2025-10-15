@@ -6,18 +6,20 @@ from bluesky.callbacks.tiled_writer import TiledWriter
 from ophyd.sim import det1, det2
 from bluesky.plans import count
 
+print("LOADING 00")
+
 nslsii.configure_base(
     get_ipython().user_ns,
-    publish_documents_with_kafka=False,
+    publish_documents_with_kafka="cdi",
 )
 
 tiled_writing_client = from_uri(
-    "https://tiled-staging.nsls2.bnl.gov/api/v1/metadata/cdi/raw",
+    "https://tiled.nsls2.bnl.gov/api/v1/metadata/cdi/raw",
     api_key=os.environ["TILED_BLUESKY_WRITING_API_KEY_CDI"],
 )
 
 c = tiled_reading_client = from_uri(
-    "https://tiled-staging.nsls2.bnl.gov/api/v1/metadata/cdi/raw",
+    "https://tiled.nsls2.bnl.gov/api/v1/metadata/cdi/raw",
     include_data_sources=True,
 )
 
