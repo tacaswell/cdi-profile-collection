@@ -594,7 +594,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstandard-0.24.0-py312h3fa7853_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb8e6e7a_2.conda
       - pypi: https://files.pythonhosted.org/packages/5b/08/185c3b29b0698328b202e6c965c23187e2e29ead78cb468aab0a09ee97fc/aioca-1.8.1-py3-none-any.whl
-      - pypi: git+https://github.com/nsls2/cditools#c3d8a0c73333b1f2c7416b26ca76311a5284f4cf
+      - pypi: git+https://github.com/jennmald/cditools?rev=sprint2#e6f86774d23d20ca243199dfd25da26b18f9d6a2
       - pypi: https://files.pythonhosted.org/packages/35/0f/7820e5e0d3990b5916e70706c6b19a34b6335e2be2aca6f4e70b6a99cc5e/ophyd_async-0.12.2-py3-none-any.whl
   terminal:
     channels:
@@ -1185,7 +1185,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstandard-0.24.0-py312h3fa7853_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb8e6e7a_2.conda
       - pypi: https://files.pythonhosted.org/packages/5b/08/185c3b29b0698328b202e6c965c23187e2e29ead78cb468aab0a09ee97fc/aioca-1.8.1-py3-none-any.whl
-      - pypi: git+https://github.com/nsls2/cditools#c3d8a0c73333b1f2c7416b26ca76311a5284f4cf
+      - pypi: git+https://github.com/jennmald/cditools?rev=sprint2#e6f86774d23d20ca243199dfd25da26b18f9d6a2
       - pypi: https://files.pythonhosted.org/packages/35/0f/7820e5e0d3990b5916e70706c6b19a34b6335e2be2aca6f4e70b6a99cc5e/ophyd_async-0.12.2-py3-none-any.whl
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_libgcc_mutex-0.1-conda_forge.tar.bz2
@@ -2295,9 +2295,9 @@ packages:
   - pkg:pypi/caproto?source=hash-mapping
   size: 278620
   timestamp: 1734300099840
-- pypi: git+https://github.com/nsls2/cditools#c3d8a0c73333b1f2c7416b26ca76311a5284f4cf
+- pypi: git+https://github.com/jennmald/cditools?rev=sprint2#e6f86774d23d20ca243199dfd25da26b18f9d6a2
   name: cditools
-  version: 0.1.1.dev13+gc3d8a0c73
+  version: 0.1.dev90+ge6f86774d
   requires_dist:
   - ophyd
   - ophyd-async>=0.10.0a4
