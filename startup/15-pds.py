@@ -23,6 +23,10 @@ class Energy(PseudoPositioner):
     d_111 = 3.1286911960950756
     ANG_OVER_KEV = 12.3984
 
+    def __init__(self, *args,  **kwargs):
+        super().__init__(*args, **kwargs)
+        self.energy.readback.name = 'energy'
+        self.energy.setpoint.name = 'energy_setpoint'
 
     def energy_to_positions(self, target_energy: float):
         """Compute undulator and mono positions given a target energy
