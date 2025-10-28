@@ -32,7 +32,7 @@ pip = ">=25.2,<26"
 [feature.profile.pypi-dependencies]
 ophyd-async = { version = ">0.10.0", extras = ["ca", "pva"] }
 # TODO get this onto conda-forge
-cditools = { git = "https://github.com/jennmald/cditools", rev="sprint2" }
+cditools = { git = "https://github.com/nsls2/cditools", rev="main" }
 
 
 [feature.qs.dependencies]
