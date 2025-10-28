@@ -30,10 +30,11 @@ pydantic-numpy = "*"
 hdf5-external-filter-plugins = ">=0.1.0,<0.2"
 blosc-hdf5-plugin = ">=1.0.1,<2"
 databroker = "==2.0.0b68"
+pip = ">=25.2,<26"
 
 
 [feature.profile.pypi-dependencies]
-ophyd-async = { version = ">=0.9.0, <0.10", extras = ["ca", "pva"] }
+ophyd-async = { version = ">=0.10", extras = ["ca", "pva"] }
 # TODO get this onto conda-forge
 cditools = { git = "https://github.com/nsls2/cditools" }
 
