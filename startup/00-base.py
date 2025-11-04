@@ -6,6 +6,9 @@ from bluesky.plans import count
 from ophyd.sim import det1, det2
 from tiled.client import from_profile, from_uri
 
+from ophyd.signal import EpicsSignalBase
+EpicsSignalBase.set_defaults(timeout=10, connection_timeout=10) 
+
 print("LOADING 00")
 
 nslsii.configure_base(

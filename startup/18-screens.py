@@ -93,7 +93,7 @@ class StandardProsilicaCam(ProsilicaCamBase):
     #     #return super().set(state)
 
 
-cam_A1 = StandardProsilicaCam("XF:09IDA-OP:1{DM-Cam:1}", name="cam_A1")
-cam_A2 = StandardProsilicaCam("XF:09IDA-BI:1{WBStop-Cam:2}", name="cam_A2")
-cam_A3 = StandardProsilicaCam("XF:09IDB-BI:1{VPM-Cam:3}", name="cam_A3")
-cam_A4 = StandardProsilicaCam("XF:09IDB-BI:1{HPM-Cam:4}", name="cam_A4")
+cam_A1 = StandardProsilicaCam("XF:09IDA-BI{DM:1-Cam:1}", name="cam_A1")
+cam_A2 = StandardProsilicaCam("XF:09IDA-BI{WBStop-Cam:2}", name="cam_A2")
+# cam_A3 = StandardProsilicaCam("XF:09IDB-BI:1{VPM-Cam:3}", name="cam_A3")
+# cam_A4 = StandardProsilicaCam("XF:09IDB-BI:1{HPM-Cam:4}", name="cam_A4")
