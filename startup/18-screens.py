@@ -49,8 +49,9 @@ class ProsilicaCamBase(ProsilicaDetector):
 
     def _stage_plugin_graph(self, plugin_graph: dict[PluginBase, CamBase | PluginBase]):
         for target, source in plugin_graph.items():
-            self.stage_sigs[target.nd_array_port] = source.port_name.get()
-            self.stage_sigs[target.enable] = True
+            print(target)
+            # self.stage_sigs[target.nd_array_port] = source.port_name.get()
+            # self.stage_sigs[target.enable] = True
 
     def stage(self):
         if self._use_default_plugin_graph and self.default_plugin_graph is not None:
@@ -62,7 +63,7 @@ class ProsilicaCamBase(ProsilicaDetector):
 class StandardProsilicaCam(ProsilicaCamBase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.stage_sigs[self.wait_for_plugins] = "No"
+        # self.stage_sigs[self.wait_for_plugins] = "No"
         self._default_plugin_graph = {
             self.image: self.cam,
             self.stats1: self.cam,
