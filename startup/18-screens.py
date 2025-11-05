@@ -13,7 +13,7 @@ from ophyd import (
 from ophyd import Component as Cpt
 from ophyd.areadetector.plugins import (
     PluginBase,
-    ROIStatPlugin,
+    ROIStatPlugin_V35,
     StatsPlugin,
     TransformPlugin,
 )
@@ -21,7 +21,7 @@ from ophyd.areadetector.plugins import (
 
 class ProsilicaCamBase(ProsilicaDetector):
     wait_for_plugins = Cpt(EpicsSignal, "WaitForPlugins", string=True, kind="hinted")
-    cam = Cpt(ProsilicaDetectorCam, "cam1:")  # VMB1????
+    cam = Cpt(ProsilicaDetectorCam, "cam1:")
     image = Cpt(ImagePlugin, "image1:")
     stats1 = Cpt(StatsPlugin, "Stats1:")
     stats2 = Cpt(StatsPlugin, "Stats2:")
@@ -33,7 +33,7 @@ class ProsilicaCamBase(ProsilicaDetector):
     roi2 = Cpt(ROIPlugin, "ROI2:")
     roi3 = Cpt(ROIPlugin, "ROI3:")
     roi4 = Cpt(ROIPlugin, "ROI4:")
-    roistat1 = Cpt(ROIStatPlugin, "ROIStat1:")
+    roistat1 = Cpt(ROIStatPlugin_V35, "ROIStat1:")
     _default_plugin_graph: Optional[dict[PluginBase, CamBase | PluginBase]] = None
 
     def __init__(self, *args, **kwargs):
@@ -49,7 +49,6 @@ class ProsilicaCamBase(ProsilicaDetector):
 
     def _stage_plugin_graph(self, plugin_graph: dict[PluginBase, CamBase | PluginBase]):
         for target, source in plugin_graph.items():
-            print(target)
             self.stage_sigs[target.nd_array_port] = source.port_name.get()
             self.stage_sigs[target.enable] = True
 
@@ -63,7 +62,6 @@ class ProsilicaCamBase(ProsilicaDetector):
 class StandardProsilicaCam(ProsilicaCamBase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # self.stage_sigs[self.wait_for_plugins] = "No"
         self._default_plugin_graph = {
             self.image: self.cam,
             self.stats1: self.cam,
@@ -77,7 +75,7 @@ class StandardProsilicaCam(ProsilicaCamBase):
             self.roi3: self.cam,
             self.roi4: self.cam,
             self.roistat1: self.cam
-        }  # reversed: plugin -> source
+        }
 
     def stage(self):
         return super().stage()
@@ -107,5 +105,6 @@ class StandardProsilicaCam(ProsilicaCamBase):
 
 cam_A1 = StandardProsilicaCam("XF:09IDA-BI{DM:1-Cam:1}", name="cam_A1")
 cam_A2 = StandardProsilicaCam("XF:09IDA-BI{WBStop-Cam:2}", name="cam_A2")
-# cam_A3 = StandardProsilicaCam("XF:09IDB-BI:1{VPM-Cam:3}", name="cam_A3")
-# cam_A4 = StandardProsilicaCam("XF:09IDB-BI:1{HPM-Cam:4}", name="cam_A4")
+cam_A3 = StandardProsilicaCam("XF:09IDA-BI{VPM-Cam:3}", name="cam_A3")
+cam_A4 = StandardProsilicaCam("XF:09IDA-BI{HPM-Cam:4}", name="cam_A4")
+cam_A5 = StandardProsilicaCam("XF:09IDA-BI{DM:2-Cam:5}", name="cam_A5")
