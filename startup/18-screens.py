@@ -33,7 +33,7 @@ class ProsilicaCamBase(ProsilicaDetector):
     roi2 = Cpt(ROIPlugin, "ROI2:")
     roi3 = Cpt(ROIPlugin, "ROI3:")
     roi4 = Cpt(ROIPlugin, "ROI4:")
-    roistat1 = Cpt(ROIStatPlugin, "ROISTAT1:")
+    roistat1 = Cpt(ROIStatPlugin, "ROIStat1:")
     _default_plugin_graph: Optional[dict[PluginBase, CamBase | PluginBase]] = None
 
     def __init__(self, *args, **kwargs):
@@ -50,8 +50,8 @@ class ProsilicaCamBase(ProsilicaDetector):
     def _stage_plugin_graph(self, plugin_graph: dict[PluginBase, CamBase | PluginBase]):
         for target, source in plugin_graph.items():
             print(target)
-            # self.stage_sigs[target.nd_array_port] = source.port_name.get()
-            # self.stage_sigs[target.enable] = True
+            self.stage_sigs[target.nd_array_port] = source.port_name.get()
+            self.stage_sigs[target.enable] = True
 
     def stage(self):
         if self._use_default_plugin_graph and self.default_plugin_graph is not None:
