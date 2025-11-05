@@ -64,6 +64,17 @@ class StandardProsilicaCam(ProsilicaCamBase):
         super().__init__(*args, **kwargs)
         self.stage_sigs[self.wait_for_plugins] = "No"
         self._default_plugin_graph = {
+            self.image: self.cam,
+            self.stats1: self.cam,
+            self.stats2: self.cam,
+            self.stats3: self.cam,
+            self.stats4: self.cam,
+            self.stats5: self.cam,
+            self.trans1: self.cam,
+            self.roi1: self.cam,
+            self.roi2: self.cam,
+            self.roi3: self.cam,
+            self.roi4: self.cam,
             self.roistat1: self.cam
         }  # reversed: plugin -> source
 
